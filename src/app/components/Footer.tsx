@@ -4,10 +4,10 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: <Github size={20} />, href: 'https://github.com', label: 'GitHub' },
-    { icon: <Linkedin size={20} />, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <Twitter size={20} />, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: <Mail size={20} />, href: 'mailto:alex@example.com', label: 'Email' },
+    { icon: <Github size={20} />, href: 'https://github.com/karthikeyan-sreekumar', label: 'GitHub' },
+    { icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/in/karthikeyan-sreekumar', label: 'LinkedIn' },
+    // { icon: <Twitter size={20} />, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: <Mail size={20} />, href: 'mailto:karthikeyansreekumar@gmail.com', label: 'Email' },
   ];
 
   const quickLinks = [
