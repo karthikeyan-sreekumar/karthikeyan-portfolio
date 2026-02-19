@@ -297,7 +297,7 @@ export default function Hero() {
                   }}
                 >
                   <ImageWithFallback
-                    src="/profile-picture.jpg"
+                    src={`${import.meta.env.BASE_URL}profile-picture.jpg`}
                     alt="Karthikeyan Sreekumar"
                     className="w-full h-full object-cover scale-110"
                   />
