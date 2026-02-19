@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <div className="text-2xl font-bold mb-4">{'<Dev />'}</div>
+            <div className="text-2xl font-bold mb-4">{'<KS />'}</div>
             <p className="text-gray-400 dark:text-gray-500 mb-4">
               Frontend Developer passionate about creating beautiful and functional web experiences.
             </p>

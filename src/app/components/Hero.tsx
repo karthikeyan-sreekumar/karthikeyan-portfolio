@@ -165,14 +165,14 @@ export default function Hero() {
               >
                 Get In Touch
               </motion.button>
-              <motion.a
+              {/* <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#projects"
                 className="px-8 py-3 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors backdrop-blur-sm"
               >
                 View Projects
-              </motion.a>
+              </motion.a> */}
             </motion.div>
 
             {/* Social Links */}

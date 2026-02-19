@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { motion, useAnimationFrame, useMotionValue, useTransform } from 'motion/react';
+import { useRef } from 'react';
 
 // Technology Logo SVG Components
 function ReactLogo() {
@@ -189,8 +190,64 @@ export default function Skills() {
   // Duplicate the array for seamless loop
   const duplicatedTechnologies = [...technologies, ...technologies];
 
+  // Card width (144px = w-36) + gap (24px = gap-6)
+  const CARD_WIDTH = 144 + 24;
+  const TOTAL_WIDTH = CARD_WIDTH * technologies.length;
+
+  function InfiniteTrack({ speed = 0.5 }: { speed?: number }) {
+    const x = useMotionValue(0);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const isHovered = useRef(false);
+
+    useAnimationFrame((_, delta) => {
+      if (isHovered.current) return;
+      let current = x.get();
+      current -= speed * (delta / 16);
+      if (Math.abs(current) >= TOTAL_WIDTH) {
+        current = 0;
+      }
+      x.set(current);
+    });
+
+    const xTransform = useTransform(x, (val) => `${val}px`);
+
+    return (
+      <div
+        className="relative mb-8 overflow-x-hidden py-4"
+        onMouseEnter={() => { isHovered.current = true; }}
+        onMouseLeave={() => { isHovered.current = false; }}
+      >
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-gray-950 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-gray-950 to-transparent z-10 pointer-events-none" />
+        <motion.div
+          ref={containerRef}
+          className="flex gap-6 will-change-transform"
+          style={{ x: xTransform }}
+        >
+          {duplicatedTechnologies.map((tech, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="flex-shrink-0 w-32 h-32 sm:w-36 sm:h-36 group"
+            >
+              <div className="relative w-full h-full bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border border-gray-200 dark:border-gray-800 overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-300`} />
+                <div className="relative w-12 h-12 mx-auto mb-3 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300">
+                  <tech.icon />
+                </div>
+                <p className="text-center text-xs font-medium text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all duration-300">
+                  {tech.name}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950 overflow-hidden">
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <motion.h2
@@ -220,42 +277,9 @@ export default function Skills() {
           </motion.p>
         </div>
 
-        {/* Scrolling Technology Cards - Row 1 */}
-        <div className="relative mb-8">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-gray-950 to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-gray-950 to-transparent z-10" />
-          
-          <div className="flex gap-6 animate-scroll">
-            {duplicatedTechnologies.map((tech, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className="flex-shrink-0 w-32 h-32 sm:w-36 sm:h-36 group"
-              >
-                <div className="relative w-full h-full bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border border-gray-200 dark:border-gray-800 overflow-hidden">
-                  {/* Gradient Background on Hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-300`} />
-                  
-                  {/* Icon */}
-                  <div className={`relative w-12 h-12 mx-auto mb-3 text-gray-700 dark:text-gray-300 group-hover:text-transparent group-hover:bg-gradient-to-br group-hover:${tech.color} group-hover:bg-clip-text transition-all duration-300`}>
-                    <tech.icon />
-                  </div>
-                  
-                  {/* Name */}
-                  <p className="text-center text-xs font-medium text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all duration-300">
-                    {tech.name}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        <InfiniteTrack />
 
-        
+
       </div>
     </section>
   );
