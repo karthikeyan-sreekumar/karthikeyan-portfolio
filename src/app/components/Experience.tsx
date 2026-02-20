@@ -37,7 +37,7 @@ export default function Experience() {
       period: '2017 - 2021',
       description: 'Focused on web development and software engineering principles.',
       achievements: [
-        'GPA: 3.8/4.0',
+        'CGPA: 8.1/10',
         'Design Team for Excel 2020',
       ],
     },
