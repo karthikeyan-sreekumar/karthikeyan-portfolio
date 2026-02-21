@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Mail, MapPin, Phone, Send, MessageCircle, Calendar, Sparkles, CheckCircle2, Loader2, Github, Linkedin, Twitter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import emailjs from '@emailjs/browser';
+
+emailjs.init({ publicKey: '7Oo7Z9wv262NZuJPP' });
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,18 +16,30 @@ export default function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    
-    // Simulate form submission with loading
-    setTimeout(() => {
+
+    try {
+      await emailjs.send(
+        'service_g6su95i',
+        'template_f3ey0jt',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }
+      );
+
       setStatus('success');
-      setTimeout(() => {
-        setStatus('idle');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      }, 4000);
-    }, 2000);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 4000);
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   const handleChange = (
@@ -42,7 +57,7 @@ export default function Contact() {
       title: 'Email',
       value: 'karthikeyansreekumar@gmail.com',
       link: 'mailto:karthikeyansreekumar@gmail.com',
-      gradient: 'from-blue-500 to-cyan-500',
+      gradient: 'from-[#00509d] to-[#fdc500]',
       description: 'Drop me a line',
     },
     {
@@ -50,7 +65,7 @@ export default function Contact() {
       title: 'Phone',
       value: '+91 8547148937',
       link: 'tel:+15551234567',
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-[#003f88] to-[#00509d]',
       description: 'Give me a call',
     },
     {
@@ -58,15 +73,14 @@ export default function Contact() {
       title: 'Location',
       value: 'Kerala, IN',
       link: null,
-      gradient: 'from-orange-500 to-red-500',
+      gradient: 'from-[#00296b] to-[#003f88]',
       description: 'Come say hi',
     },
   ];
 
   const socialLinks = [
     { icon: Github, link: 'https://github.com/karthikeyan-sreekumar', label: 'GitHub', gradient: 'from-gray-700 to-gray-900' },
-    { icon: Linkedin, link: 'https://www.linkedin.com/in/karthikeyan-sreekumar', label: 'LinkedIn', gradient: 'from-blue-600 to-blue-800' },
-    // { icon: Twitter, link: 'https://twitter.com', label: 'Twitter', gradient: 'from-sky-400 to-blue-500' },
+    { icon: Linkedin, link: 'https://www.linkedin.com/in/karthikeyan-sreekumar', label: 'LinkedIn', gradient: 'from-[#00296b] to-[#00509d]' },
   ];
 
   const quickActions = [
@@ -89,7 +103,7 @@ export default function Contact() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-purple-400/10 dark:from-blue-600/10 dark:to-purple-600/10 rounded-full blur-3xl"
+          className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-br from-azure/10 to-sunbus/10 dark:from-[#00509d]/10 dark:to-[#fdc500]/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -101,7 +115,7 @@ export default function Contact() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-br from-pink-400/10 to-orange-400/10 dark:from-pink-600/10 dark:to-orange-600/10 rounded-full blur-3xl"
+          className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-br from-french/10 to-azure/10 dark:from-[#003f88]/10 dark:to-[#00509d]/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -113,7 +127,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, type: "spring" }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm mb-6 border border-blue-200/50 dark:border-blue-800/50"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold/20 to-sunbus/10 dark:from-[#00296b]/40 dark:to-[#fdc500]/20 text-azure dark:text-gold rounded-full text-sm mb-6 border border-sunbus/50 dark:border-[#fdc500]/30"
           >
             <Sparkles size={16} className="animate-pulse" />
             Let's Connect
@@ -134,7 +148,7 @@ export default function Contact() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 mx-auto mb-4"
+            className="w-20 h-1 bg-gradient-to-r from-azure to-french dark:from-gold dark:to-sunbus mx-auto mb-4"
           />
 
           <motion.p
@@ -147,36 +161,6 @@ export default function Contact() {
             Have a project in mind? I'm always open to discussing new opportunities and creative ideas.
           </motion.p>
         </div>
-
-        {/* Quick Actions */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12"
-        >
-          {quickActions.map((action, index) => {
-            const Icon = action.icon;
-            return (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 cursor-pointer group hover:shadow-xl transition-all"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <Icon size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900 dark:text-white mb-1">{action.text}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{action.subtext}</p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div> */}
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Contact Info Sidebar */}
@@ -204,7 +188,7 @@ export default function Contact() {
                     <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
                       {/* Gradient Background on Hover */}
                       <div className={`absolute inset-0 bg-gradient-to-br ${info.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                      
+
                       <div className="relative flex items-start gap-4">
                         <div className={`w-14 h-14 bg-gradient-to-br ${info.gradient} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg`}>
                           <Icon size={24} className="text-white" />
@@ -259,26 +243,6 @@ export default function Contact() {
                 })}
               </div>
             </motion.div>
-
-            {/* Availability Badge */}
-            {/* <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 1 }}
-              className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-2xl border border-green-200 dark:border-green-800"
-            >
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                  <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">Currently Available</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">Accepting new projects</p>
-                </div>
-              </div>
-            </motion.div> */}
           </motion.div>
 
           {/* Contact Form */}
@@ -291,8 +255,8 @@ export default function Contact() {
           >
             <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 relative overflow-hidden">
               {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-br from-pink-400/10 to-orange-400/10 rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-azure/10 to-sunbus/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-br from-french/10 to-azure/10 rounded-full blur-3xl" />
 
               <div className="relative">
                 <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Send Me a Message</h3>
@@ -318,7 +282,7 @@ export default function Contact() {
                         onFocus={() => setFocusedField('name')}
                         onBlur={() => setFocusedField(null)}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:bg-white dark:focus:bg-gray-900 transition-all"
+                        className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:outline-none focus:border-azure dark:focus:border-gold focus:bg-white dark:focus:bg-gray-900 transition-all"
                         placeholder="Your name"
                       />
                     </motion.div>
@@ -340,7 +304,7 @@ export default function Contact() {
                         onFocus={() => setFocusedField('email')}
                         onBlur={() => setFocusedField(null)}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:bg-white dark:focus:bg-gray-900 transition-all"
+                        className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:outline-none focus:border-azure dark:focus:border-gold focus:bg-white dark:focus:bg-gray-900 transition-all"
                         placeholder="your.email@example.com"
                       />
                     </motion.div>
@@ -364,7 +328,7 @@ export default function Contact() {
                       onFocus={() => setFocusedField('subject')}
                       onBlur={() => setFocusedField(null)}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:bg-white dark:focus:bg-gray-900 transition-all"
+                      className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:outline-none focus:border-azure dark:focus:border-gold focus:bg-white dark:focus:bg-gray-900 transition-all"
                       placeholder="What's this about?"
                     />
                   </motion.div>
@@ -387,7 +351,7 @@ export default function Contact() {
                       onBlur={() => setFocusedField(null)}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:bg-white dark:focus:bg-gray-900 transition-all resize-none"
+                      className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:outline-none focus:border-azure dark:focus:border-gold focus:bg-white dark:focus:bg-gray-900 transition-all resize-none"
                       placeholder="Tell me about your project..."
                     />
                   </motion.div>
@@ -397,7 +361,7 @@ export default function Contact() {
                     disabled={status === 'sending'}
                     whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
                     whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
-                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 font-medium disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-azure to-french dark:from-sunbus dark:to-gold text-white dark:text-gray-900 rounded-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 font-medium disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {status === 'sending' ? (
                       <>
@@ -424,6 +388,20 @@ export default function Contact() {
                         <div>
                           <p className="font-medium">Message sent successfully!</p>
                           <p className="text-sm opacity-80">I'll get back to you as soon as possible.</p>
+                        </div>
+                      </motion.div>
+                    )}
+                    {status === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        className="p-4 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/30 dark:to-orange-900/30 text-red-600 dark:text-red-400 rounded-xl border border-red-200 dark:border-red-800 flex items-center gap-3"
+                      >
+                        <Mail size={24} className="flex-shrink-0" />
+                        <div>
+                          <p className="font-medium">Failed to send message</p>
+                          <p className="text-sm opacity-80">Please try again or email me directly.</p>
                         </div>
                       </motion.div>
                     )}

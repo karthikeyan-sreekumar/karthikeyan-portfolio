@@ -17,7 +17,7 @@ export default function Projects() {
       live: 'https://example.com',
       badge: 'Featured',
       badgeIcon: Star,
-      gradient: 'from-blue-500 to-cyan-500',
+      gradient: 'from-[#00509d] to-[#fdc500]',
       stats: { users: '10K+', rating: '4.8' },
     },
     {
@@ -30,7 +30,7 @@ export default function Projects() {
       live: 'https://example.com',
       badge: 'Trending',
       badgeIcon: TrendingUp,
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-[#003f88] to-[#00509d]',
       stats: { users: '5K+', rating: '4.9' },
     },
     {
@@ -43,7 +43,7 @@ export default function Projects() {
       live: 'https://example.com',
       badge: 'Award Winner',
       badgeIcon: Award,
-      gradient: 'from-orange-500 to-red-500',
+      gradient: 'from-[#00296b] to-[#003f88]',
       stats: { users: '8K+', rating: '4.7' },
     },
     {
@@ -56,7 +56,7 @@ export default function Projects() {
       live: 'https://example.com',
       badge: 'Most Popular',
       badgeIcon: Zap,
-      gradient: 'from-green-500 to-emerald-500',
+      gradient: 'from-[#fdc500] to-[#ffd500]',
       stats: { users: '15K+', rating: '5.0' },
     },
   ];
@@ -65,8 +65,8 @@ export default function Projects() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-blue-400/5 dark:bg-blue-600/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-purple-400/5 dark:bg-purple-600/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-azure/5 dark:bg-[#00509d]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-french/5 dark:bg-[#003f88]/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -76,12 +76,12 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm mb-6 border border-blue-200/50 dark:border-blue-800/50"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold/20 to-sunbus/10 dark:from-[#00296b]/40 dark:to-[#fdc500]/20 text-azure dark:text-gold rounded-full text-sm mb-6 border border-sunbus/50 dark:border-[#fdc500]/30"
           >
             <Star size={16} className="fill-current" />
             Featured Work
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,15 +91,15 @@ export default function Projects() {
           >
             Featured Projects
           </motion.h2>
-          
+
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 mx-auto mb-4"
+            className="w-20 h-1 bg-gradient-to-r from-azure to-french dark:from-gold dark:to-sunbus mx-auto mb-4"
           />
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -115,7 +115,7 @@ export default function Projects() {
           {projects.map((project, index) => {
             const BadgeIcon = project.badgeIcon;
             const isEven = index % 2 === 0;
-            
+
             return (
               <motion.div
                 key={index}
@@ -154,10 +154,10 @@ export default function Projects() {
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      
+
                       {/* Gradient Overlay */}
                       <div className={`absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300`} />
-                      
+
                       {/* Animated Border */}
                       <motion.div
                         className={`absolute inset-0 border-2 rounded-2xl bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
@@ -167,13 +167,13 @@ export default function Projects() {
                       {/* Stats Overlay */}
                       <div className="absolute bottom-4 left-4 right-4 flex gap-4">
                         <div className="flex items-center gap-2 px-3 py-1.5 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg">
-                          <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-4 h-4 text-azure" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
                           </svg>
                           <span className="text-xs font-medium text-gray-900 dark:text-white">{project.stats.users}</span>
                         </div>
                         <div className="flex items-center gap-1 px-3 py-1.5 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg">
-                          <Star size={14} className="text-yellow-500 fill-yellow-500" />
+                          <Star size={14} className="text-gold fill-gold" />
                           <span className="text-xs font-medium text-gray-900 dark:text-white">{project.stats.rating}</span>
                         </div>
                       </div>
@@ -213,13 +213,13 @@ export default function Projects() {
                     >
                       {project.category}
                     </motion.div>
-                    
+
                     <motion.h3
                       initial={{ opacity: 0, x: isEven ? -20 : 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 }}
-                      className="text-2xl sm:text-3xl lg:text-4xl mb-4 text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all duration-300"
+                      className="text-2xl sm:text-3xl lg:text-4xl mb-4 text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-azure group-hover:to-french dark:group-hover:from-gold dark:group-hover:to-sunbus transition-all duration-300"
                     >
                       {project.title}
                     </motion.h3>
@@ -247,10 +247,7 @@ export default function Projects() {
                       <motion.span
                         key={techIndex}
                         whileHover={{ scale: 1.1, y: -2 }}
-                        className={`px-4 py-2 bg-gradient-to-r ${project.gradient} bg-opacity-10 text-transparent bg-clip-text font-medium rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-transparent hover:shadow-lg transition-all backdrop-blur-sm`}
-                        style={{
-                          background: `linear-gradient(135deg, ${project.gradient.includes('blue') ? 'rgba(59, 130, 246, 0.1)' : project.gradient.includes('purple') ? 'rgba(168, 85, 247, 0.1)' : project.gradient.includes('orange') ? 'rgba(249, 115, 22, 0.1)' : 'rgba(34, 197, 94, 0.1)'})`,
-                        }}
+                        className="px-4 py-2 text-azure dark:text-gold font-medium rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-transparent hover:shadow-lg transition-all backdrop-blur-sm bg-sunbus/10 dark:bg-[#fdc500]/10"
                       >
                         {tech}
                       </motion.span>
@@ -276,14 +273,14 @@ export default function Projects() {
                       <Github size={20} />
                       <span className="font-medium">View Code</span>
                     </motion.a>
-                    
+
                     <motion.a
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all backdrop-blur-sm"
+                      className="flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:border-azure dark:hover:border-gold hover:text-azure dark:hover:text-gold transition-all backdrop-blur-sm"
                     >
                       <ExternalLink size={20} />
                       <span className="font-medium">Live Demo</span>

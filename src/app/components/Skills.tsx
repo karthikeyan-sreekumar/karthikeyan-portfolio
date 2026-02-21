@@ -232,10 +232,10 @@ export default function Skills() {
             >
               <div className="relative w-full h-full bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border border-gray-200 dark:border-gray-800 overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-300`} />
-                <div className="relative w-12 h-12 mx-auto mb-3 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300">
+                <div className="relative w-12 h-12 mx-auto mb-3 text-gray-700 dark:text-gray-300 group-hover:text-azure dark:group-hover:text-gold transition-all duration-300">
                   <tech.icon />
                 </div>
-                <p className="text-center text-xs font-medium text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all duration-300">
+                <p className="text-center text-xs font-medium text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-azure group-hover:to-french dark:group-hover:from-gold dark:group-hover:to-sunbus transition-all duration-300">
                   {tech.name}
                 </p>
               </div>
@@ -264,7 +264,7 @@ export default function Skills() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 mx-auto mb-4"
+            className="w-20 h-1 bg-gradient-to-r from-azure to-french dark:from-gold dark:to-sunbus mx-auto mb-4"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}

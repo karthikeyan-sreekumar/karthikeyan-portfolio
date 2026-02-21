@@ -48,7 +48,7 @@ export default function Experience() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-4 text-gray-900 dark:text-white">Experience & Education</h2>
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-4"></div>
+          <div className="w-20 h-1 bg-azure dark:bg-gold mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             My professional journey and academic background
           </p>
@@ -68,11 +68,11 @@ export default function Experience() {
                 }`}
               >
                 {/* Timeline Icon */}
-                <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white dark:bg-gray-950 border-4 border-blue-600 dark:border-blue-500 rounded-full flex items-center justify-center z-10">
+                <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white dark:bg-gray-950 border-4 border-azure dark:border-gold rounded-full flex items-center justify-center z-10">
                   {exp.type === 'work' ? (
-                    <Briefcase className="text-blue-600 dark:text-blue-400" size={24} />
+                    <Briefcase className="text-azure dark:text-gold" size={24} />
                   ) : (
-                    <GraduationCap className="text-blue-600 dark:text-blue-400" size={24} />
+                    <GraduationCap className="text-azure dark:text-gold" size={24} />
                   )}
                 </div>
 
@@ -83,14 +83,14 @@ export default function Experience() {
                   }`}
                 >
                   <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div className="text-sm text-blue-600 dark:text-blue-400 mb-2">{exp.period}</div>
+                    <div className="text-sm text-azure dark:text-gold mb-2">{exp.period}</div>
                     <h3 className="text-xl mb-1 text-gray-900 dark:text-white">{exp.title}</h3>
                     <div className="text-gray-600 dark:text-gray-400 mb-3">{exp.company}</div>
                     <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">{exp.description}</p>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, achIndex) => (
                         <li key={achIndex} className="flex items-start">
-                          <span className="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                          <span className="text-azure dark:text-gold mr-2">•</span>
                           <span className="text-gray-600 dark:text-gray-400 text-sm">{achievement}</span>
                         </li>
                       ))}

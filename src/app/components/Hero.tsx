@@ -38,13 +38,13 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 pt-16 md:pt-20 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-gray-950 dark:via-blue-950/20 dark:to-purple-950/20 overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 pt-16 md:pt-20 bg-gradient-to-br from-white via-gold/10 to-sunbus/10 dark:from-gray-950 dark:via-[#00296b]/20 dark:to-[#003f88]/10 overflow-hidden"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Gradient Orbs */}
         <motion.div
-          className="absolute top-20 -left-20 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 dark:from-blue-600/10 dark:to-purple-600/10 rounded-full blur-3xl"
+          className="absolute top-20 -left-20 w-72 h-72 bg-gradient-to-r from-gold/20 to-sunbus/20 dark:from-[#fdc500]/10 dark:to-[#ffd500]/10 rounded-full blur-3xl"
           animate={{
             x: [0, 30, 0],
             y: [0, 50, 0],
@@ -57,7 +57,7 @@ export default function Hero() {
           }}
         />
         <motion.div
-          className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 dark:from-purple-600/10 dark:to-pink-600/10 rounded-full blur-3xl"
+          className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-r from-sunbus/20 to-azure/15 dark:from-[#00509d]/10 dark:to-[#fdc500]/10 rounded-full blur-3xl"
           animate={{
             x: [0, -40, 0],
             y: [0, -30, 0],
@@ -74,7 +74,7 @@ export default function Hero() {
         {particles.map((particle) => (
           <motion.div
             key={particle.id}
-            className="absolute rounded-full bg-blue-400/30 dark:bg-blue-400/20"
+            className="absolute rounded-full bg-sunbus/30 dark:bg-gold/20"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -95,7 +95,7 @@ export default function Hero() {
         ))}
 
         {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,80,157,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,80,157,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -106,7 +106,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm mb-6 border border-blue-200/50 dark:border-blue-800/50"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold/20 to-sunbus/10 dark:from-[#00296b]/40 dark:to-[#fdc500]/20 text-azure dark:text-gold rounded-full text-sm mb-6 border border-sunbus/50 dark:border-[#fdc500]/30"
             >
               <Sparkles size={16} className="animate-pulse" />
               Frontend Developer
@@ -127,12 +127,12 @@ export default function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                <span className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                  Karthikeyan 
+                <span className="relative bg-gradient-to-r from-azure via-french to-imperial dark:from-gold dark:via-sunbus dark:to-azure bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                  Karthikeyan
                 </span>
                 {/* Animated underline */}
                 <motion.span
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 rounded-full"
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-azure via-french to-imperial dark:from-gold dark:via-sunbus dark:to-azure rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
@@ -146,10 +146,10 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
-              I craft beautiful, responsive web experiences with modern technologies. 
+              I craft beautiful, responsive web experiences with modern technologies.
               Passionate about clean code, pixel-perfect designs, and creating intuitive user interfaces.
             </motion.p>
-            
+
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -158,21 +158,13 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
             >
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0, 80, 157, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToContact}
-                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-lg shadow-lg hover:shadow-xl transition-all"
+                className="px-8 py-3 bg-gradient-to-r from-azure to-french dark:from-sunbus dark:to-gold text-white dark:text-gray-900 rounded-lg shadow-lg hover:shadow-xl transition-all"
               >
                 Get In Touch
               </motion.button>
-              {/* <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#projects"
-                className="px-8 py-3 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors backdrop-blur-sm"
-              >
-                View Projects
-              </motion.a> */}
             </motion.div>
 
             {/* Social Links */}
@@ -194,7 +186,7 @@ export default function Hero() {
                   href={social.href}
                   target={social.href.startsWith('http') ? '_blank' : undefined}
                   rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full hover:bg-gradient-to-r hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-900/50 dark:hover:to-purple-900/50 transition-all text-gray-700 dark:text-gray-300 shadow-md"
+                  className="p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full hover:bg-gradient-to-r hover:from-gold/20 hover:to-sunbus/10 dark:hover:from-[#00296b]/50 dark:hover:to-[#fdc500]/20 transition-all text-gray-700 dark:text-gray-300 shadow-md"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
@@ -228,7 +220,7 @@ export default function Hero() {
                   y: mousePosition.y * 0.5,
                 }}
               >
-                <code className="text-xs text-blue-600 dark:text-blue-400 font-mono">
+                <code className="text-xs text-azure dark:text-gold font-mono">
                   {'<div className="creative" />'}
                 </code>
               </motion.div>
@@ -250,7 +242,7 @@ export default function Hero() {
                   y: mousePosition.y * -0.3,
                 }}
               >
-                <code className="text-xs text-purple-600 dark:text-purple-400 font-mono">
+                <code className="text-xs text-french dark:text-sunbus font-mono">
                   {'const build = () => magic'}
                 </code>
               </motion.div>
@@ -265,7 +257,7 @@ export default function Hero() {
               >
                 {/* Animated Blob Background */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-blue-400/30 via-purple-400/30 to-pink-400/30 dark:from-blue-600/20 dark:via-purple-600/20 dark:to-pink-600/20"
+                  className="absolute inset-0 bg-gradient-to-br from-gold/30 via-sunbus/30 to-azure/20 dark:from-[#ffd500]/20 dark:via-[#fdc500]/20 dark:to-[#00509d]/15"
                   animate={{
                     borderRadius: [
                       '60% 40% 30% 70% / 60% 30% 70% 40%',
@@ -282,7 +274,7 @@ export default function Hero() {
 
                 {/* Image with Organic Shape Mask */}
                 <motion.div
-                  className="relative w-full h-full overflow-hidden"
+                  className="relative w-full h-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-2xl"
                   animate={{
                     borderRadius: [
                       '60% 40% 30% 70% / 60% 30% 70% 40%',
@@ -302,12 +294,12 @@ export default function Hero() {
                     className="w-full h-full object-cover scale-110"
                   />
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent dark:from-blue-900/40 dark:to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-azure/20 to-transparent dark:from-[#00296b]/40 dark:to-transparent" />
                 </motion.div>
 
                 {/* Decorative Ring */}
                 <motion.div
-                  className="absolute inset-0 border-4 border-blue-400/50 dark:border-blue-600/30"
+                  className="absolute inset-0 border-4 border-sunbus/50 dark:border-gold/30"
                   animate={{
                     borderRadius: [
                       '60% 40% 30% 70% / 60% 30% 70% 40%',
@@ -329,7 +321,7 @@ export default function Hero() {
                 {Array.from({ length: 16 }).map((_, i) => (
                   <motion.div
                     key={i}
-                    className="w-2 h-2 rounded-full bg-blue-400/40 dark:bg-blue-600/30"
+                    className="w-2 h-2 rounded-full bg-azure/40 dark:bg-gold/30"
                     animate={{
                       scale: [1, 1.5, 1],
                       opacity: [0.4, 1, 0.4],
