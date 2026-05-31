@@ -35,7 +35,7 @@ export default function Certifications() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {certifications.map((cert, index) => (
             <motion.a
-              key={index}
+              key={cert.credentialId}
               href={cert.verifyUrl}
               target="_blank"
               rel="noopener noreferrer"
