@@ -36,11 +36,11 @@ export default function About() {
           {/* Text Content */}
           <div>
             <h3 className="text-2xl sm:text-3xl mb-6 text-gray-900 dark:text-white">
-              Full-Stack Engineer with a Frontend Focus
+              Senior Full-Stack Engineer with a Frontend Focus
             </h3>
 
             <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              I'm a full-stack software engineer with 4+ years of experience building
+              I'm a senior full-stack software engineer with 4+ years of experience building
               production-grade web applications. I specialize in creating scalable,
               high-performance interfaces where thoughtful frontend architecture and
               user experience make a real impact.
