@@ -1,6 +1,7 @@
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
+import SpeakingBanner from './components/SpeakingBanner';
 import Skills from './components/Skills';
 import Certifications from './components/Certifications';
 import Projects from './components/Projects';
@@ -16,6 +17,7 @@ export default function App() {
         <Navigation />
         <Hero />
         <About />
+        <SpeakingBanner />
         <Skills />
         <Projects />
         <Certifications />
