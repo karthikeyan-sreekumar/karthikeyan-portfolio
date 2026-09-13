@@ -109,7 +109,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold/20 to-sunbus/10 dark:from-[#00296b]/40 dark:to-[#fdc500]/20 text-azure dark:text-gold rounded-full text-sm mb-6 border border-sunbus/50 dark:border-[#fdc500]/30"
             >
               <Sparkles size={16} className="animate-pulse" />
-              Frontend Developer
+              Senior Full-Stack Engineer
               <Code2 size={16} />
             </motion.div>
 
@@ -146,8 +146,9 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
-              I craft beautiful, responsive web experiences with modern technologies.
-              Passionate about clean code, pixel-perfect designs, and creating intuitive user interfaces.
+              I build production applications and developer tooling for the Atlassian
+              ecosystem with React, TypeScript, and Forge. Passionate about clean architecture,
+              thoughtful user experiences, and AI-assisted development.
             </motion.p>
 
             {/* CTA Buttons */}
