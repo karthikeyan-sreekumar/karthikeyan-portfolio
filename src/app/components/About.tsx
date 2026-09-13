@@ -1,26 +1,41 @@
 import { Code, Palette, Zap, Users } from 'lucide-react';
 
+function getYearsOfExperience(): string {
+  const start = new Date(2021, 7); // August 2021
+  const now = new Date();
+  const years = now.getFullYear() - start.getFullYear();
+  const months = now.getMonth() - start.getMonth();
+  const totalMonths = years * 12 + months;
+  const fullYears = Math.floor(totalMonths / 12);
+  const remainingMonths = totalMonths % 12;
+
+  if (remainingMonths >= 9) return `${fullYears + 1}`;
+  if (remainingMonths > 6) return `${fullYears}+`;
+  return `${fullYears}`;
+}
+
 export default function About() {
+  const yearsExp = getYearsOfExperience();
   const highlights = [
     {
       icon: <Code size={24} />,
-      title: 'Clean Code',
-      description: 'Writing maintainable and scalable code is my priority',
+      title: 'Clean Architecture',
+      description: 'Designing maintainable, scalable systems from the ground up',
     },
     {
       icon: <Palette size={24} />,
       title: 'UI/UX Focus',
-      description: 'Creating beautiful and intuitive user experiences',
+      description: 'Creating intuitive, data-rich user experiences',
     },
     {
       icon: <Zap size={24} />,
       title: 'Performance',
-      description: 'Building fast and optimized web applications',
+      description: 'Optimizing builds and pipelines for faster delivery',
     },
     {
       icon: <Users size={24} />,
-      title: 'Collaboration',
-      description: 'Working effectively with designers and backend teams',
+      title: 'Product Ownership',
+      description: 'Driving products from architecture to release, and mentoring engineers',
     },
   ];
 
@@ -40,10 +55,10 @@ export default function About() {
             </h3>
 
             <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              I'm a senior full-stack software engineer with 4+ years of experience building
-              production-grade web applications. I specialize in creating scalable,
-              high-performance interfaces where thoughtful frontend architecture and
-              user experience make a real impact.
+              I'm a senior full-stack software engineer with {yearsExp} years of experience building
+              production applications and developer tooling for the Atlassian ecosystem. I specialize
+              in scalable, high-performance interfaces with React, TypeScript, and Atlassian Forge,
+              owning products from architecture through release.
             </p>
 
             <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
@@ -54,12 +69,12 @@ export default function About() {
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="flex-1 min-w-[120px] text-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-                <div className="text-3xl font-bold text-azure dark:text-gold">4+</div>
+                <div className="text-3xl font-bold text-azure dark:text-gold">{yearsExp}</div>
                 <div className="text-gray-600 dark:text-gray-400 text-sm">Years Experience</div>
               </div>
               <div className="flex-1 min-w-[120px] text-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-                <div className="text-3xl font-bold text-azure dark:text-gold">4+</div>
-                <div className="text-gray-600 dark:text-gray-400 text-sm">Projects Completed</div>
+                <div className="text-3xl font-bold text-azure dark:text-gold">200+</div>
+                <div className="text-gray-600 dark:text-gray-400 text-sm">Installations Served</div>
               </div>
               {/* <div className="flex-1 min-w-[120px] text-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
                 <div className="text-3xl font-bold text-azure dark:text-gold">30+</div>

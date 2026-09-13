@@ -1,7 +1,15 @@
 import { Award, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 
-const certifications = [
+interface Certification {
+  title: string;
+  issuer: string;
+  date: string;
+  credentialId?: string;
+  verifyUrl: string;
+}
+
+const certifications: Certification[] = [
   {
     title: 'Advanced React',
     issuer: 'Meta',
@@ -10,11 +18,10 @@ const certifications = [
     verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/WNB95WZ7R7DY',
   },
   {
-    title: 'Building with the Claude API',
+    title: 'Claude Certified Architect Foundations',
     issuer: 'Anthropic',
-    date: 'Issued May 2026',
-    credentialId: '9rg62dv3vhte',
-    verifyUrl: 'https://verify.skilljar.com/c/9rg62dv3vhte',
+    date: 'Issued Aug 2026',
+    verifyUrl: 'https://www.credly.com/badges/99c391f8-5514-4ab9-b16f-426ac02860c3/linked_in_profile',
   },
 ];
 
@@ -35,7 +42,7 @@ export default function Certifications() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {certifications.map((cert, index) => (
             <motion.a
-              key={cert.credentialId}
+              key={cert.title}
               href={cert.verifyUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -65,9 +72,11 @@ export default function Certifications() {
                   <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
                     {cert.date}
                   </p>
-                  <p className="text-gray-400 dark:text-gray-500 text-xs mt-2 font-mono">
-                    Credential ID: {cert.credentialId}
-                  </p>
+                  {cert.credentialId && (
+                    <p className="text-gray-400 dark:text-gray-500 text-xs mt-2 font-mono">
+                      Credential ID: {cert.credentialId}
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.a>

@@ -74,13 +74,49 @@ function GitLogo() {
   );
 }
 
-function FigmaLogo() {
+function ForgeLogo() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-      <circle cx="15" cy="9" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      <rect x="6" y="3" width="6" height="6" rx="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      <rect x="6" y="9" width="6" height="6" rx="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      <rect x="6" y="15" width="6" height="6" rx="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+      <path d="M12 3L20 8V16L12 21L4 16V8L12 3Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+      <path d="M9 10L15 14M15 10L9 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function PythonLogo() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+      <path d="M12 3C9 3 8 4.5 8 6.5V9H12.5V10H6.5C4.5 10 3 11.5 3 14C3 16.5 4.5 18 6.5 18H8V15.5C8 13.5 9.5 12 11.5 12H15C16.5 12 17.5 11 17.5 9.5V6.5C17.5 4.5 15.5 3 12 3Z" stroke="currentColor" strokeWidth="1.3" fill="none" strokeLinejoin="round" />
+      <circle cx="10" cy="6.5" r="0.8" fill="currentColor" />
+    </svg>
+  );
+}
+
+function PostgresLogo() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+      <ellipse cx="12" cy="6" rx="7" ry="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+      <path d="M5 6V18C5 19.66 8.13 21 12 21C15.87 21 19 19.66 19 18V6" stroke="currentColor" strokeWidth="1.5" fill="none" />
+      <path d="M5 12C5 13.66 8.13 15 12 15C15.87 15 19 13.66 19 12" stroke="currentColor" strokeWidth="1.5" fill="none" />
+    </svg>
+  );
+}
+
+function BigQueryLogo() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+      <circle cx="10" cy="10" r="6" stroke="currentColor" strokeWidth="1.5" fill="none" />
+      <path d="M14.5 14.5L20 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M8 10H12M10 8V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ClaudeLogo() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+      <path d="M6 17L10 7L11.5 7L15.5 17M8 14H13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 7L19 12L16 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -106,31 +142,12 @@ function ReduxLogo() {
   );
 }
 
-function SassLogo() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-      <rect x="4" y="8" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      <path d="M8 8V6C8 5 9 4 10 4H14C15 4 16 5 16 6V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  );
-}
-
 function JestLogo() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
       <circle cx="9" cy="12" r="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
       <circle cx="15" cy="12" r="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
       <path d="M7 18C7 16 5 14 5 12C5 8 8 5 12 5C16 5 19 8 19 12C19 14 17 16 17 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function WebpackLogo() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-      <path d="M12 3L20 8V16L12 21L4 16V8L12 3Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
-      <path d="M12 3V12M12 21V12M12 12L4 8M12 12L20 8M12 12L4 16M12 12L20 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -152,39 +169,26 @@ function NodeLogo() {
   );
 }
 
-function GraphQLLogo() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-      <circle cx="12" cy="5" r="1.5" fill="currentColor" />
-      <circle cx="19" cy="9" r="1.5" fill="currentColor" />
-      <circle cx="19" cy="15" r="1.5" fill="currentColor" />
-      <circle cx="12" cy="19" r="1.5" fill="currentColor" />
-      <circle cx="5" cy="15" r="1.5" fill="currentColor" />
-      <circle cx="5" cy="9" r="1.5" fill="currentColor" />
-      <path d="M12 5L19 9M19 9L19 15M19 15L12 19M12 19L5 15M5 15L5 9M5 9L12 5" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  );
-}
-
 export default function Skills() {
   const technologies = [
     { name: 'React', icon: ReactLogo, color: 'from-cyan-500 to-blue-500' },
     { name: 'TypeScript', icon: TypeScriptLogo, color: 'from-blue-600 to-blue-700' },
     { name: 'JavaScript', icon: JavaScriptLogo, color: 'from-yellow-400 to-yellow-600' },
+    { name: 'Atlassian Forge', icon: ForgeLogo, color: 'from-blue-600 to-indigo-700' },
     { name: 'Next.js', icon: NextJSLogo, color: 'from-gray-800 to-gray-900' },
+    { name: 'Node.js', icon: NodeLogo, color: 'from-green-600 to-green-700' },
+    { name: 'Python', icon: PythonLogo, color: 'from-blue-500 to-yellow-500' },
     { name: 'Tailwind CSS', icon: TailwindLogo, color: 'from-cyan-400 to-cyan-600' },
     { name: 'HTML5', icon: HTMLLogo, color: 'from-orange-500 to-orange-600' },
     { name: 'CSS3', icon: CSSLogo, color: 'from-blue-500 to-blue-600' },
-    { name: 'Git', icon: GitLogo, color: 'from-orange-600 to-red-600' },
-    { name: 'Figma', icon: FigmaLogo, color: 'from-purple-500 to-pink-500' },
+    { name: 'PostgreSQL', icon: PostgresLogo, color: 'from-sky-600 to-blue-700' },
+    { name: 'BigQuery', icon: BigQueryLogo, color: 'from-blue-500 to-cyan-600' },
     { name: 'Vite', icon: ViteLogo, color: 'from-purple-600 to-yellow-500' },
     { name: 'Redux', icon: ReduxLogo, color: 'from-purple-600 to-purple-700' },
-    { name: 'Sass', icon: SassLogo, color: 'from-pink-500 to-pink-600' },
     { name: 'Jest', icon: JestLogo, color: 'from-red-600 to-red-700' },
-    { name: 'Webpack', icon: WebpackLogo, color: 'from-blue-400 to-blue-600' },
+    { name: 'Git', icon: GitLogo, color: 'from-orange-600 to-red-600' },
     { name: 'Framer Motion', icon: FramerLogo, color: 'from-pink-500 to-rose-500' },
-    { name: 'Node.js', icon: NodeLogo, color: 'from-green-600 to-green-700' },
-    { name: 'GraphQL', icon: GraphQLLogo, color: 'from-pink-600 to-purple-600' },
+    { name: 'Claude', icon: ClaudeLogo, color: 'from-orange-500 to-amber-600' },
   ];
 
   // Duplicate the array for seamless loop
